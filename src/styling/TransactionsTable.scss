@@ -1,0 +1,133 @@
+@import "./mixins&autos.scss";
+@import "./variables.scss";
+
+.TransactionsTable {
+    @include DFC;
+
+    gap: 25px;
+    padding: 25px;
+
+    width: clamp(300px, 100%, calc((40vw + 600px) / 1));
+
+    background: $OBG;
+    border-radius: 12px;
+
+    transition: width 0.5s ease;
+
+    #isAdding {
+        max-width: calc((40vw + 600px) / 1);
+    }
+
+    .lableBar {
+        @include DFR;
+        @include x16b;
+        @include sc(400px) {
+            @include DFC;
+            align-items: flex-start;
+            .addNewBtn {
+                width: 100%;
+            }
+        }
+
+        gap: 25px;
+        justify-content: space-between;
+
+        width: 100%;
+
+        .lable {
+            @include x16b;
+        }
+        .lessPriortyBtn {
+            @include x16b;
+
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            color: $T45;
+
+            padding: 12px 15px;
+
+            cursor: pointer;
+        }
+
+        .addNewBtn {
+            @include DFR;
+            @include x16b;
+
+            gap: 20px;
+            justify-content: center;
+
+            padding: 12px 25px;
+
+            border-radius: 100px;
+
+            background: $ACC;
+
+            cursor: pointer;
+        }
+        .active {
+            color: $TC;
+        }
+    }
+    .tableWrap {
+        @include sc(1700px) {
+            @include SCL;
+            overflow: auto;
+            overflow-x: scroll;
+            padding: 0 2px 7px 2px;
+        }
+
+        width: 100%;
+        box-sizing: content-box;
+
+        table {
+            @include x16;
+
+            width: clamp(825px, 100%, 100%);
+            padding: 0 2px;
+
+            thead {
+                tr {
+                    outline: 1px inset transparent;
+
+                    th {
+                        padding: 12px 15px;
+                        color: $T45;
+                        text-align: left;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    outline: 1px inset $T45;
+                    border-radius: 12px;
+                    td {
+                        padding: 12px 15px;
+                        margin-bottom: 2px;
+                        width: min-content;
+                        text-align: left;
+                    }
+                    #date,
+                    #description,
+                    #edit button {
+                        color: $T45;
+                    }
+                    #edit {
+                        text-align: right;
+                        button {
+                            cursor: pointer;
+                            text-decoration: underline;
+                            text-underline-offset: 2px;
+                        }
+                    }
+                    &:nth-of-type(even) {
+                        outline: 1px inset $T25;
+                    }
+                }
+            }
+            .br {
+                display: block;
+                min-height: 4px;
+            }
+        }
+    }
+}

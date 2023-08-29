@@ -1,0 +1,86 @@
+@import "./mixins&autos.scss";
+@import "./variables.scss";
+input {
+    @include x16;
+
+    color: $TC;
+    background: $T05;
+    border-radius: 12px;
+
+    padding: 12px 15px;
+    width: -webkit-fill-available;
+
+    position: relative;
+    box-sizing: content-box;
+
+    &:hover {
+        border: 1px inset $T45;
+    }
+}
+.amountInput {
+width: -webkit-fill-available;
+    span {
+        padding: 10px;
+        color: $T45;
+    }
+    input {
+        &[value=v] {
+            content: attr(v);
+            color: red;
+        }
+    }
+}
+.dropDownInput {
+    position: relative;
+    min-width: 100%;
+
+    .dropDown {
+        @include DFC;
+
+        gap: 2px;
+        align-items: flex-start;
+        padding: 5px;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+
+        transform: translateY(calc(100% + 7px));
+
+        width: 100%;
+
+        background: $DBG;
+        border-radius: 12px;
+
+        span {
+            padding: 15px 20px;
+
+            width: 100%;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            &:hover,
+            &[aria-selected="true"] {
+                background: $T05;
+            }
+        }
+    }
+}
+.regularInput {
+    min-width: 100%;
+}
+.datePickerInput {
+    @include DFR;
+    justify-content: space-between;
+    min-width: 100%;
+
+    input {
+        width: 100%;
+        background: url(/src/assets/datePicker.svg) no-repeat;
+        background-position-x: 91%;
+        background-position-y: 50%;
+    }
+}

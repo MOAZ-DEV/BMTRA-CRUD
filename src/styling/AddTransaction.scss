@@ -1,0 +1,88 @@
+@import "./mixins&autos.scss";
+@import "./variables.scss";
+
+.AddTransaction {
+    @include DFC;
+    @include sc (1200px) {
+        width: clamp(300px, 100%, calc((40vw + 600px) / 1));
+    }
+
+    width: 400px;
+
+    gap: 25px;
+    padding: 25px;
+
+    background: $OBG;
+    border-radius: 12px;
+
+    .lableBar {
+        @include DFR;
+        @include x16b;
+        @include sc(700px) {
+            @include DFC;
+            align-items: flex-start;
+        }
+
+        gap: 25px;
+        justify-content: space-between;
+
+        width: 100%;
+
+        .lable {
+            @include x16b;
+        }
+        .wraper {
+            @include DFR;
+            @include sc(545px) {
+                @include DFC;
+                gap: 15px;
+
+                button {
+                    width: -webkit-fill-available;
+                }
+            }
+            gap: 25px;
+            justify-content: space-between;
+
+            width: 100%;
+            .lessPriortyBtn {
+                @include x16b;
+
+                text-decoration: underline;
+                text-underline-offset: 2px;
+                color: $T45;
+
+                padding: 12px 15px;
+
+                cursor: pointer;
+            }
+            .saveBtn {
+                @include DFR;
+                @include x16b;
+
+                gap: 20px;
+                justify-content: center;
+
+                padding: 12px 25px;
+
+                border-radius: 100px;
+
+                background: $ACC;
+
+                cursor: pointer;
+            }
+            .active {
+                color: $TC;
+            }
+        }
+    }
+    .inputsWraper {
+        @include DFC;
+
+        gap: 5px;
+
+        min-width: -webkit-fill-available;
+
+      
+    }
+}
