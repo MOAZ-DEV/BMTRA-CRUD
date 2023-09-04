@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
 import "../styling/TransactionsTable.scss"
 interface TTI {
@@ -17,10 +17,10 @@ const TransactionsTable: FC<TTI> = (props) => {
             <span className="lable">Transactions</span>
 
             {AND ? <button
-                    className="addNewBtn active"
-                    onClick={() => { AN(true); }}>
-                    <span>+</span>Add New
-                </button> : ""}
+                className="addNewBtn active"
+                onClick={() => { AN(true); }}>
+                <span>+</span>Add New
+            </button> : ""}
         </div>
         <span className="br"></span>
         <div className="tableWrap">
@@ -35,10 +35,11 @@ const TransactionsTable: FC<TTI> = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {TL.map(data => <>
+
+                    {TL.length> 0 ? TL.map(data => <>
                         <tr>
                             <td id="date">{data.Date || "Unset"}</td>
-                            <td id="amount">{data.Amount || "Unset"}</td>
+                            <td id="amount">{`$ ${data.Amount}` || "Unset"}</td>
                             <td id="tag">{data.Type || "Unset"}</td>
                             <td id="description">{data.Description || "Unset"}</td>
                             <td id="edit"><button onClick={() => {
@@ -54,7 +55,12 @@ const TransactionsTable: FC<TTI> = (props) => {
                             }}>Delete</button></td>
                         </tr>
                         <span className="br"></span>
-                    </>)}
+                    </>) :
+                        <tr>
+                            <td id="date">Add your first transaction!</td>
+
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

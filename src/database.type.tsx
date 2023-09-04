@@ -1,32 +1,15 @@
 import { legacy_createStore as createStore } from 'redux';
 
-interface TLI {
-
-  Date: string,
+export interface TLI {
+  [x: string]: any;
+  Date: any,
   Amount: string,
   Type: "Dept" | "Income" | "Expense" | "Saving",
   Description?: string,
-
 };
 const
   TL: TLI[] = [
-    {
-      Date: "28/01/2023	",
-      Amount: "$ 2,000",
-      Type: "Expense",
-    },
-    {
-      Date: "04/01/2023	",
-      Amount: "$ 500",
-      Type: "Saving",
-      Description: "Savings Freelance",
-    },
-    {
-      Date: "16/12/2022	",
-      Amount: "$ 145",
-      Type: "Income",
-      Description: "Expenses Car",
-    },
+    
   ], initialstate = {
     transactions: TL,
   };

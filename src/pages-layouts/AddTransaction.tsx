@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { AmountInput, DatePickerInput, DropDownInput, RegularInput } from "../elements-components/input.tsx"
 import "../styling/AddTransaction.scss";
+import { TLI } from "../database.type.tsx";
 
 interface ANI {
     AN: Function;
@@ -10,23 +12,24 @@ export const AddTransaction: FC<ANI> = (props) => {
 
     const
         { AN } = props,
-        [data, setData] = useState({
-            date: new Date().toLocaleDateString('fr-FR'),
-            amount: "",
-            type: "",
-            description: ""
+        [data, setData] = useState<TLI>({
+            Date: null,
+            Amount: "",
+            Type: "" as "Dept" | "Income" | "Expense" | "Saving",
+            Description: "",
         }),
         dispatch = useDispatch();
     const saveTransaction = () => {
         dispatch({
             type: "ADD_TRANSACTION",
             payload: {
-                Date: data.date,
-                Amount: data.amount,
-                Type: data.type,
-                Description: data.description,
+                Date: data.Date,
+                Amount: data.Amount,
+                Type: data.Type,
+                Description: data.Description,
             }
         });
+        console.dir(data)
     };
 
 
@@ -39,13 +42,13 @@ export const AddTransaction: FC<ANI> = (props) => {
 
 
                 <DatePickerInput placeholder=""
-                    valueSet={(value: any) => setData({ ...data, date: value.value })} />
+                    valueSet={(value: any) => setData({ ...data, Date: value })} />
                 <AmountInput placeholder="Set Amount"
-                    valueSet={(value: any) => setData({ ...data, amount: value.value })} />
+                    valueSet={(value: any) => setData({ ...data, Amount: value })} />
                 <DropDownInput placeholder="Use Type" dropList={["Income", "Exepense", "Saving", "Dept"]}
-                    valueSet={(value: any) => setData({ ...data, type: value.value })} />
+                    valueSet={(value: any) => setData({ ...data, Type: value })} />
                 <RegularInput placeholder="description"
-                    valueSet={(value: any) => setData({ ...data, description: value.value })} />
+                    valueSet={(value: any) => setData({ ...data, Description: value.value })} />
 
             </div>
 
